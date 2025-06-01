@@ -14,9 +14,9 @@ Which is exactly what this image does.
 ## Usage
 
 ```
-docker run -p 8000:8000 ghcr.io/tofran/better-whoami
+docker run -p 8000:8000 -e EXPOSE_ENV_VARS=true ghcr.io/tofran/better-whoami
 # or
-docker run -p 8000:8000 tofran/better-whoami
+docker run -p 8000:8000 -e EXPOSE_ENV_VARS=true tofran/better-whoami
 ```
 
 And your server with interactive docs will be running at `localhost:8000/`.
