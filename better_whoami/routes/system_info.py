@@ -91,10 +91,7 @@ def system_info() -> SystemInfo:
     )
 
     disk_info = DiskInfo(
-        usage={
-            f"{key}_bytes": value  # fmt: skip
-            for key, value in psutil.disk_usage("/")._asdict().items()
-        },
+        usage={f"{key}_bytes": value for key, value in psutil.disk_usage("/")._asdict().items()},
         partitions=[
             Partition(
                 device=partition.device,
