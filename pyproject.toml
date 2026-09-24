@@ -20,7 +20,7 @@ dependencies = [
 package-mode = false
 
 [tool.poetry.group.dev.dependencies]
-ruff = "^0.11.9"
+ruff = "^0.16.8"
 pyright = "^1.1.400"
 
 [build-system]
