@@ -2,11 +2,8 @@ help: ## Show this help
 	@egrep -h '\s##\s' $(MAKEFILE_LIST) | sort | \
 	awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-21s\033[0m %s\n", $$1, $$2}'
 
-setup-venv: ## Setup a local venv
-	python3 -m venv venv
-
 install-deps: ## Install python dependencies for development
-	pip install -r requirements.txt -r requirements-dev.txt
+	poetry install
 
 UVICORN_COMMON_OPTS = better_whoami.app:app \
 		--host ::  \

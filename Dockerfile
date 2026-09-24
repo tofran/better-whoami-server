@@ -1,4 +1,4 @@
-FROM python:3.13-bookworm as builder
+FROM python:3.14-trixie AS builder
 WORKDIR /app
 
 COPY pyproject.toml poetry.lock poetry.toml ./
@@ -6,7 +6,7 @@ COPY pyproject.toml poetry.lock poetry.toml ./
 RUN curl -sSL https://install.python-poetry.org | python - && \
     /root/.local/bin/poetry install --without dev --no-interaction --no-ansi --no-directory --no-cache
 
-FROM python:3.13-slim-bookworm as runner
+FROM python:3.14-trixie AS runner
 WORKDIR /app
 
 ENV PYTHONUNBUFFERED=1 \

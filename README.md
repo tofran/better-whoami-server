@@ -42,6 +42,26 @@ Example: retrieval of env vars
 }
 ```
 
+## Development
+
+Requires Python (see `pyproject.toml` for the supported versions) and
+[Poetry](https://python-poetry.org/). The pinned Python version can be installed
+with [mise](https://mise.jdx.dev/):
+
+```
+mise install
+```
+
+Then:
+
+```
+make install-deps  # Install python dependencies for development
+make dev           # Start the local development server
+make start         # Start a production like server
+make lint          # Lint the code according to the standards
+make format        # Format the code according to the standards
+make help          # Show all available commands
+```
 
 ## License
 
