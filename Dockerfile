@@ -1,4 +1,12 @@
-FROM python:3.14-trixie AS builder
+FROM python:3.14-trixie AS base
+
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get autoremove -y && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/* /tmp/* /var/tmp/*
+
+FROM base AS builder
 WORKDIR /app
 
 COPY pyproject.toml poetry.lock poetry.toml ./
@@ -6,7 +14,7 @@ COPY pyproject.toml poetry.lock poetry.toml ./
 RUN curl -sSL https://install.python-poetry.org | python - && \
     /root/.local/bin/poetry install --without dev --no-interaction --no-ansi --no-directory --no-cache
 
-FROM python:3.14-trixie AS runner
+FROM base AS runner
 WORKDIR /app
 
 ENV PYTHONUNBUFFERED=1 \
