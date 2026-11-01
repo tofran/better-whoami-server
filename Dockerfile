@@ -1,4 +1,4 @@
-FROM python:3.14-trixie AS base
+FROM python:3.15-trixie AS base
 
 RUN apt-get update && \
     apt-get upgrade -y && \
